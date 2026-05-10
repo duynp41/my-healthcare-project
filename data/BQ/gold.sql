@@ -22,7 +22,7 @@ GROUP BY
   provider_last_name,
   p.specialization,
   d.dept_name,
-  p.datasource
+  p.datasource;
 
 -- 2. Patient History: This table provides a complete history of a patient’s visits, diagnoses, and financial interactions
 CREATE OR REPLACE TABLE `duynp20-project.gold.patient_history` AS
