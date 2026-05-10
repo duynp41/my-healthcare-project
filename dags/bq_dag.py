@@ -2,6 +2,7 @@ import pendulum
 from airflow import DAG
 from datetime import timedelta
 from airflow.providers.google.cloud.operators.bigquery import BigQueryInsertJobOperator
+import os
 
 # =========================
 # CONFIG
@@ -9,9 +10,13 @@ from airflow.providers.google.cloud.operators.bigquery import BigQueryInsertJobO
 PROJECT_ID = "duynp20-project"
 LOCATION = "asia-southeast1"
 
-SQL_FILE_PATH_1 = "/home/airflow/gcs/data/BQ/bronze.sql"
-SQL_FILE_PATH_2 = "/home/airflow/gcs/data/BQ/silver.sql"
-SQL_FILE_PATH_3 = "/home/airflow/gcs/data/BQ/gold.sql"
+DAG_FOLDER = os.path.dirname(os.path.abspath(__file__))
+
+SQL_BASE_PATH = os.path.join(os.path.dirname(DAG_FOLDER), 'data', 'BQ')
+
+SQL_FILE_PATH_1 = os.path.join(SQL_BASE_PATH, "bronze.sql")
+SQL_FILE_PATH_2 = os.path.join(SQL_BASE_PATH, "silver.sql")
+SQL_FILE_PATH_3 = os.path.join(SQL_BASE_PATH, "gold.sql")
 
 # Read SQL query from file
 def read_sql_file(file_path: str) -> str:
