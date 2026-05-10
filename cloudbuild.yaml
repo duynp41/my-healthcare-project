@@ -1,0 +1,33 @@
+steps:
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    args:
+      - 'gsutil'
+      - '-m'
+      - 'rsync'
+      - '-r'
+      - '-d'
+      - 'dags/'
+      - 'gs://asia-southeast1-healthcare--34176f8a-bucket/dags'
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    args:
+      - 'gsutil'
+      - '-m'
+      - 'rsync'
+      - '-r'
+      - '-d'
+      - 'data/ingestion/'
+      - 'gs://asia-southeast1-healthcare--34176f8a-bucket/data/ingestion'
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    args:
+      - 'gsutil'
+      - '-m'
+      - 'rsync'
+      - '-r'
+      - '-d'
+      - 'data/BQ/'
+      - 'gs://asia-southeast1-healthcare--34176f8a-bucket/data/BQ'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
