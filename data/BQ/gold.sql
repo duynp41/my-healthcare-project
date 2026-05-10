@@ -1,4 +1,4 @@
--- 1. Total Charge Amount per provider by department.
+-- 1. Total Charge Amount per provider by department
 CREATE OR REPLACE TABLE `duynp20-project.gold.total_charge_amount_per_provider_by_department` AS
 SELECT 
     p.provider_key,
