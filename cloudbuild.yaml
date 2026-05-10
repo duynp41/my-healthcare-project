@@ -1,33 +1,15 @@
 steps:
+  - name: 'python:3.10-slim'
+    id: 'Validate'
+    entrypoint: 'bash'
+    args: ['scripts/validate_dag.sh']
+    
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    args:
-      - 'gsutil'
-      - '-m'
-      - 'rsync'
-      - '-r'
-      - '-d'
-      - 'dags/'
-      - 'gs://asia-southeast1-healthcare--34176f8a-bucket/dags'
+    id: 'Deploy'
+    entrypoint: 'bash'
+    args: ['scripts/deploy_dag.sh']
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    args:
-      - 'gsutil'
-      - '-m'
-      - 'rsync'
-      - '-r'
-      - '-d'
-      - 'data/ingestion/'
-      - 'gs://asia-southeast1-healthcare--34176f8a-bucket/data/ingestion'
-
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    args:
-      - 'gsutil'
-      - '-m'
-      - 'rsync'
-      - '-r'
-      - '-d'
-      - 'data/BQ/'
-      - 'gs://asia-southeast1-healthcare--34176f8a-bucket/data/BQ'
-
-options:
-  logging: CLOUD_LOGGING_ONLY
+    id: 'Trigger'
+    entrypoint: 'bash'
+    args: ['scripts/trigger_dag.sh']
