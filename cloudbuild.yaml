@@ -13,3 +13,7 @@ steps:
     id: 'Trigger'
     entrypoint: 'bash'
     args: ['scripts/trigger_dag.sh']
+
+options:
+  serviceAccount: 'projects/duynp20-project/serviceAccounts/Tên-Service-Account-Của-Cậu@duynp20-project.iam.gserviceaccount.com'
+  logging: CLOUD_LOGGING_ONLY
