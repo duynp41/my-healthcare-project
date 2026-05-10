@@ -2,7 +2,14 @@ steps:
   - name: 'python:3.10-slim'
     id: 'Validate'
     entrypoint: 'bash'
-    args: ['scripts/validate_dag.sh']
+    args:
+      - '-c'
+      - |
+        pip install --upgrade pip
+        pip install -r requirements.txt
+        
+        chmod +x scripts/validate_dag.sh
+        ./scripts/validate_dag.sh
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     id: 'Deploy'
@@ -14,9 +21,7 @@ steps:
     entrypoint: 'bash'
     args: ['scripts/trigger_dag.sh']
 
-# ĐƯA RA NGOÀI: serviceAccount nằm cùng cấp với steps
 serviceAccount: 'projects/duynp20-project/serviceAccounts/cloudbuil-deployer@duynp20-project.iam.gserviceaccount.com'
 
-# GIỮ LẠI: logging vẫn nằm trong options
 options:
   logging: CLOUD_LOGGING_ONLY
