@@ -14,6 +14,9 @@ steps:
     entrypoint: 'bash'
     args: ['scripts/trigger_dag.sh']
 
+# ĐƯA RA NGOÀI: serviceAccount nằm cùng cấp với steps
+serviceAccount: 'projects/duynp20-project/serviceAccounts/cloudbuil-deployer@duynp20-project.iam.gserviceaccount.com'
+
+# GIỮ LẠI: logging vẫn nằm trong options
 options:
-  serviceAccount: 'projects/duynp20-project/serviceAccounts/cloudbuil-deployer@duynp20-project.iam.gserviceaccount.com'
   logging: CLOUD_LOGGING_ONLY
