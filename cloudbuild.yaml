@@ -3,7 +3,7 @@ steps:
     id: 'Validate'
     entrypoint: 'bash'
     args: ['scripts/validate_dag.sh']
-    
+
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     id: 'Deploy'
     entrypoint: 'bash'
