@@ -3,7 +3,7 @@ set -e
 
 echo "--- Checking DAG syntax ---"
 
-for file in dags/*.py data/ingestion/*.py; do
+for file in dags/*.py data/ingestion/*.ipynb; do
     echo "Checking: $file"
     python3 -m py_compile "$file"
 done
