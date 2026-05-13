@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-BUCKET_NAME="asia-southeast1-healthcare--34176f8a-bucket"
+BUCKET_NAME="asia-southeast1-healthcare--d87d51d7-bucket"
 
 echo "--- Deploy to GCS ---"
 gsutil -m rsync -r -d data/ gs://$BUCKET_NAME/data
